@@ -4,7 +4,12 @@
         "SageMakerEndpointID": {
             "Type": "String",
           "Description": "SageMaker Endpoint Name"
+        },
+        "ServiceEmailAddress": {
+            "Type": "String",
+          "Description": "Spam Detection Email address"
         }
+
     },
     "Metadata": {
         "AWS::CloudFormation::Designer": {
@@ -133,7 +138,7 @@
                 "Runtime": "python3.7",
                 "Code": {
                     "S3Bucket": "codebuckets",
-                    "S3Key": "LF3wiLayer.zip"
+                    "S3Key": "LF3.zip"
                 },
                 "Description": "spam-handler",
                 "MemorySize": 128,
@@ -147,7 +152,8 @@
                 "Environment": {
                     "Variables": {
                         "REGION": "us-east-1",
-                        "ENDPOINT": "sms-spam-classifier-mxnet-2021-03-31-16-27-19-252"
+                        "sagemaker_endpoint": { "Ref" : "SageMakerEndpointID" },
+                        "spam_detect_email_addr": { "Ref" : "ServiceEmailAddress"}
                     }
                 }
             },

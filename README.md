@@ -1,13 +1,13 @@
-# Spam-Mail-Filter #
+# Spam Detection #
 
 ## Overview ##
-Spam-Mail-Filter adapts machine learning models to predict whether your email is spam or not. The e-mail service [Spam-Mail-Filter](a3-tim@tim2021.de) returns a judgement showing how the likelihood your mail is spam with confidence level.
+Spam Detection adapts machine learning models to predict whether your email is spam or not. The e-mail service [Spam-Mail-Filter](a3-tim@tim2021.de) returns a judgement showing how the likelihood your mail is spam with confidence level.
 
 ## Demo ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo.png)
 
 ## Application (Language & Tools) ##
-1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [API Gateway](https://aws.amazon.com/apigateway/), [Lex](https://aws.amazon.com/lex/), [SQS](https://aws.amazon.com/sqs/), [SNS](https://aws.amazon.com/sns/), [DynamoDB](https://aws.amazon.com/dynamodb/), [ElasticSearch](https://aws.amazon.com/es/)), Swagger API, PyThon
+1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/)
 
 
 ## Architecture ##

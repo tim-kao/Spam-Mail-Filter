@@ -4,14 +4,14 @@
 Spam-Mail-Filter adapts machine learning models to predict whether your email is spam or not. The e-mail service [Spam-Mail-Filter](a3-tim@tim2021.de) returns a judgement showing how the likelihood your mail is spam with confidence level.
 
 ## Demo ##
-![image](https://github.com/tim-kao/Spam-Mail-Filter/demo.png)
+![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo.png)
 
 ## Application (Language & Tools) ##
 1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [API Gateway](https://aws.amazon.com/apigateway/), [Lex](https://aws.amazon.com/lex/), [SQS](https://aws.amazon.com/sqs/), [SNS](https://aws.amazon.com/sns/), [DynamoDB](https://aws.amazon.com/dynamodb/), [ElasticSearch](https://aws.amazon.com/es/)), Swagger API, PyThon
 
 
 ## Architecture ##
-![image]((https://github.com/tim-kao/Spam-Mail-Filter/architecture.png)
+![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/architecture.png)
 1) User -> Frontend (chat.html / AWS S3): user input "hello" to initiate the conversation
 2) Frontend -> API: send user's messages to API.
 3) API -> LF0: LF0 receive message from API.

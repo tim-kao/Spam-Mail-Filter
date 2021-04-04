@@ -7,7 +7,7 @@ Spam Detection adapts machine learning models to predict whether your email is s
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo.png)
 
 ## Application (Language & Tools) ##
-1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/)
+1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/))
 
 ## Architecture ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/architecture.png)
@@ -21,13 +21,18 @@ Spam Detection adapts machine learning models to predict whether your email is s
 - Receive email
 - Put email on S3
 
-#### 1) [S3](https://aws.amazon.com/s3/)  - B1
+#### 2) [S3](https://aws.amazon.com/s3/)  - B1
 - Store emails
 - Trigger lambda once object is created
 
-#### 2) [Lambda](https://aws.amazon.com/lambda/) - LF3
+#### 3) [Lambda](https://aws.amazon.com/lambda/) - LF3
 - Retrieve the text content
 - Call prediction endpoint for analysis
+
+#### 4) [SageMaker](https://aws.amazon.com/sagemaker/)
+- Build machine learning model by notebook
+- Train the model with massive data
+- Deploy an endpoint for access
 
 *AWS Region: US-east-1 (N. Virginia)
 

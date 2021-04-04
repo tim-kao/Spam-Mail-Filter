@@ -1,7 +1,7 @@
 # Spam Detection #
 
 ## Overview ##
-Spam Detection adapts machine learning models to predict whether your email is spam or not. The e-mail service [Spam-Mail-Filter](a3-tim@tim2021.de) returns a judgement showing how much the likelihood that your mail is spam with confidence level.
+Spam Detection adapts machine learning models to predict whether your email is spam or not. The email service [Spam Detection] a3-tim@tim2021.de returns a judgment showing how much the likelihood that your mail is spam with a confidence level.
 
 ## Demo ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo.png)

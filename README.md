@@ -4,10 +4,12 @@
 Spam Detection adapts machine learning models to predict whether your email is spam or not. The email service [Spam Detection] a3-tim@tim2021.de returns a judgment showing how much the likelihood that your mail is spam with a confidence level.
 
 ## Demo ##
+Spam email
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo.png)
-
+Non-spam email
+![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo-2.png)
 ## Application (Language & Tools) ##
-1) Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/))
+Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/))
 
 ## Architecture ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/architecture.png)

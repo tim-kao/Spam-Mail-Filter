@@ -1,0 +1,353 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "SageMakerEndpointID": {
+            "Type": "String",
+          "Description": "SageMaker Endpoint Name"
+        }
+    },
+    "Metadata": {
+        "AWS::CloudFormation::Designer": {
+            "199b1e78-1d13-4eb9-be2a-f03fe32e8bae": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 630,
+                    "y": 90
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "c007421b-196e-41df-af89-c04809a3023e": {
+                "size": {
+                    "width": 150,
+                    "height": 150
+                },
+                "position": {
+                    "x": 720,
+                    "y": 30
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "335c22cc-8f37-474a-a2a9-d22a0d43549c": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 300,
+                    "y": 210
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "ace3dd46-7a8c-4f42-889d-2f92762b13a5": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 180,
+                    "y": 90
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "7d80cb35-77bf-45ab-8ea3-55409c1e3dd7": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 300,
+                    "y": 90
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "65654168-e5ed-4e29-937a-cce92172f0b6": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 390,
+                    "y": 240
+                },
+                "z": 1,
+                "embeds": []
+            },
+            "556d64c9-580b-4539-b272-1255be87bf58": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 510,
+                    "y": 90
+                },
+                "z": 1,
+                "embeds": [],
+                "isassociatedwith": [
+                    "199b1e78-1d13-4eb9-be2a-f03fe32e8bae"
+                ]
+            },
+            "1e3f62ca-fb2c-491d-b2fc-6beb09f7a827": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 390,
+                    "y": 30
+                },
+                "z": 1,
+                "embeds": [],
+                "dependson": [
+                    "556d64c9-580b-4539-b272-1255be87bf58"
+                ]
+            },
+            "f4960150-c4e6-4bbe-8468-d6044c18e138": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 630,
+                    "y": 10
+                },
+                "z": 1,
+                "embeds": []
+            }
+        }
+    },
+    "Resources": {
+            "LF3": {
+                "Type": "AWS::Lambda::Function",
+                "Properties": {
+                "FunctionName": "LF3",
+                "Handler": "lambda_function.lambda_handler",
+                "Runtime": "python3.7",
+                "Code": {
+                    "S3Bucket": "codebuckets",
+                    "S3Key": "LF3wiLayer.zip"
+                },
+                "Description": "spam-handler",
+                "MemorySize": 128,
+                "Timeout": 30,
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Environment": {
+                    "Variables": {
+                        "REGION": "us-east-1",
+                        "ENDPOINT": "sms-spam-classifier-mxnet-2021-03-31-16-27-19-252"
+                    }
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "199b1e78-1d13-4eb9-be2a-f03fe32e8bae"
+                }
+            }
+        },
+        "LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "RetentionInDays": 7
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "c007421b-196e-41df-af89-c04809a3023e"
+                }
+            }
+        },
+        "LambdaLayer": {
+            "Type": "AWS::Lambda::LayerVersion",
+            "Properties": {
+                "CompatibleRuntimes": [
+                    "python3.7"
+                ],
+                "Description": "numpy",
+                "Content" : {
+                    "S3Bucket": "codebuckets",
+                    "S3Key": "numpy_layer.zip"
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "f4960150-c4e6-4bbe-8468-d6044c18e138"
+                }
+            }
+        },
+        "LambdaInvokePermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "LF3",
+                        "Arn"
+                    ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "s3.amazonaws.com",
+                "SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "556d64c9-580b-4539-b272-1255be87bf58"
+                }
+            }
+        },
+        "B1": {
+            "DependsOn": "LambdaInvokePermission",
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "NotificationConfiguration": {
+                    "LambdaConfigurations": [
+                        {
+                            "Function": {
+                                "Fn::GetAtt": [
+                                    "LF3",
+                                    "Arn"
+                                ]
+                            },
+                            "Event": "s3:ObjectCreated:*"
+                        }
+                    ]
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "1e3f62ca-fb2c-491d-b2fc-6beb09f7a827"
+                }
+            }
+        },
+        "S3BP4IUMA": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "PolicyDocument": {
+                    "Id": "MyPolicy",
+                    "Version": "2012-10-17",
+                        "Statement": [
+                       {
+                           "Sid": "AllowSESPuts",
+                           "Effect": "Allow",
+                           "Principal": {
+                               "Service": "ses.amazonaws.com"
+                           },
+                           "Action": "s3:PutObject",
+                           "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:aws:s3:::",
+                                        {
+                                            "Ref": "B1"
+                                        },
+                                        "/*"
+                                    ]
+                                ]
+                            }
+                       }
+                   ]
+                },
+                "Bucket": {
+                    "Ref": "B1"
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "e277f4ca-2f31-4739-8a0d-d46d4acb9d92"
+                }
+            },
+            "DependsOn": [
+                "B1"
+            ]
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/AWSCloudFormationFullAccess",
+                    "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+                    "arn:aws:iam::aws:policy/AmazonSESFullAccess",
+                    "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+                ],
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "root",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:*"
+                                    ],
+                                    "Resource": "arn:aws:logs:*:*:*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "65654168-e5ed-4e29-937a-cce92172f0b6"
+                }
+            }
+        },
+        "RuleSetE30C6C48": {
+            "Type": "AWS::SES::ReceiptRuleSet",
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "ace3dd46-7a8c-4f42-889d-2f92762b13a5"
+                }
+            }
+        },
+        "SESReceiptRule": {
+            "Type": "AWS::SES::ReceiptRule",
+            "Properties": {
+                "RuleSetName": { "Ref": "RuleSetE30C6C48"},
+                "Rule": {
+                    "Name": "Inbound",
+                    "Enabled": true,
+                    "Actions": [
+                        {
+                            "S3Action": {
+                                "BucketName": { "Ref": "B1" }
+                            }
+                        }
+                    ],
+                    "ScanEnabled" : true
+                }
+            }
+        }
+    }
+}

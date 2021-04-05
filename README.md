@@ -9,14 +9,10 @@ Spam email
 Non-spam email
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo-2.png)
 ## Application (Language & Tools) ##
-Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/))
+Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/), [Cloudformation](https://aws.amazon.com/cloudformation/))
 
 ## Architecture ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/architecture.png)
-1) User -> Send email to request the spam detection
-2) SES -> puts the email on S3 bucket
-3) S3 -> triggers lambda LF3
-4) LF3 -> retrieve the text content and call prediction endpoint for analysis. Then, it returns the analysis result to the user.
 
 ## Description ##
 #### 1) [SES](https://aws.amazon.com/tw/ses/) - SES

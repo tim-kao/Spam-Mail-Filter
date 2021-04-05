@@ -1,0 +1,31 @@
+service: sagemakerscheduler
+
+provider:
+  name: aws
+  runtime: python2.7
+  memorySize: 128
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - sagemaker:DescribeTrainingJob
+        - sagemaker:CreateTrainingJob
+      Resource: "arn:aws:sagemaker:*:*:*"
+    - Effect: "Allow"
+      Action:
+        - iam:PassRole
+      # Don't forget to update the account number and the name of the SageMaker service role
+      Resource: "arn:aws:iam::205407915465:role/service-role/AmazonSageMaker-ExecutionRole-20210328T003708"
+
+stage: dev
+region: us-east-1
+
+functions:
+  main:
+    handler: handler.main
+    events:
+      - schedule: rate(10 minutes)
+    environment:
+      training_job_name: "sms-spam-classifier-mxnet-2021-03-31-16-22-42-837"
+      training_job_prefix: "spamclassification"
+      instance_type: "ml.c5.2xlarge"
+      instance_count: "1"

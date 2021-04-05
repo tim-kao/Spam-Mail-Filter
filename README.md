@@ -36,6 +36,10 @@ Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.
 - Train the model with massive data
 - Deploy an endpoint for access
 
+#### 5) [Cloudformation](https://aws.amazon.com/cloudformation/)
+- Deploy every resource
+- Input parameter sagemaker endpoint and email address for spam detection service
+
 *AWS Region: US-east-1 (N. Virginia)
 
 ## Contributor ##

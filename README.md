@@ -9,7 +9,10 @@ Spam Detection adapts machine learning models to predict whether your email is s
 ## Non-spam email ##
 ![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/demo-2.png)
 ## Auto Retraining ML model and updating an endpoint ##
-
+## Re-train ##
+![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/retrain.png)
+## Re-model ##
+![image](https://github.com/tim-kao/Spam-Mail-Filter/blob/main/demo/remodel.png)
 
 ## Application (Language & Tools) ##
 Backend: AWS Serverless ([S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), [SageMaker](https://aws.amazon.com/sagemaker/), [SES](https://aws.amazon.com/tw/ses/), [Cloudformation](https://aws.amazon.com/cloudformation/))
